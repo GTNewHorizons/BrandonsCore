@@ -2,7 +2,6 @@ package com.brandon3055.brandonscore.asm;
 
 import com.brandon3055.brandonscore.BrandonsCore;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-
 import java.util.Map;
 
 /**
@@ -14,27 +13,26 @@ import java.util.Map;
 @IFMLLoadingPlugin.SortingIndex(value = 1001)
 public class LoadingPlugin implements IFMLLoadingPlugin {
 
-	@Override
-	public String[] getASMTransformerClass() {
-		return new String[] {ClassTransformer.class.getName()};
-	}
+    @Override
+    public String[] getASMTransformerClass() {
+        return new String[] {ClassTransformer.class.getName()};
+    }
 
-	@Override
-	public String getModContainerClass() {
-		return null;
-	}
+    @Override
+    public String getModContainerClass() {
+        return null;
+    }
 
-	@Override
-	public String getSetupClass() {
-		return null;
-	}
+    @Override
+    public String getSetupClass() {
+        return null;
+    }
 
-	@Override
-	public void injectData(Map<String, Object> data) {
-	}
+    @Override
+    public void injectData(Map<String, Object> data) {}
 
-	@Override
-	public String getAccessTransformerClass() {
-		return null;
-	}
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
+    }
 }
