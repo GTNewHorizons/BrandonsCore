@@ -11,38 +11,38 @@ import net.minecraft.world.World;
  */
 public class ClientProxy extends CommonProxy {
 
-	@Override
-	public boolean isDedicatedServer() {
-		return false;
-	}
+    @Override
+    public boolean isDedicatedServer() {
+        return false;
+    }
 
-	@Override
-	public MinecraftServer getMCServer() {
-		return super.getMCServer();
-	}
+    @Override
+    public MinecraftServer getMCServer() {
+        return super.getMCServer();
+    }
 
-	@Override
-	public World getClientWorld() {
-		return Minecraft.getMinecraft().theWorld;
-	}
+    @Override
+    public World getClientWorld() {
+        return Minecraft.getMinecraft().theWorld;
+    }
 
-	@Override
-	public boolean isSpaceDown() {
-		return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
-	}
+    @Override
+    public boolean isSpaceDown() {
+        return Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed();
+    }
 
-	@Override
-	public boolean isShiftDown() {
-		return Minecraft.getMinecraft().gameSettings.keyBindSneak.getIsKeyPressed();
-	}
+    @Override
+    public boolean isShiftDown() {
+        return Minecraft.getMinecraft().gameSettings.keyBindSneak.getIsKeyPressed();
+    }
 
-	@Override
-	public boolean isCtrlDown() {
-		return Minecraft.getMinecraft().gameSettings.keyBindSprint.getIsKeyPressed();
-	}
+    @Override
+    public boolean isCtrlDown() {
+        return Minecraft.getMinecraft().gameSettings.keyBindSprint.getIsKeyPressed();
+    }
 
-	@Override
-	public EntityPlayer getClientPlayer() {
-		return Minecraft.getMinecraft().thePlayer;
-	}
+    @Override
+    public EntityPlayer getClientPlayer() {
+        return Minecraft.getMinecraft().thePlayer;
+    }
 }
