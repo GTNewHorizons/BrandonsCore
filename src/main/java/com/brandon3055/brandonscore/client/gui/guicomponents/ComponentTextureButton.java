@@ -4,12 +4,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 /**
  * Created by brandon3055 on 31/7/2015.
  */
 public class ComponentTextureButton extends ComponentButton {
+
     public int textureXPos;
     public int textureYPos;
     private ResourceLocation texture;
@@ -17,18 +19,8 @@ public class ComponentTextureButton extends ComponentButton {
 
     // public ComponentTextureButton(int id, int xPos, int yPos, int textureXPos, int textureYPos, int xSise, int ySise,
     // String text) {
-    public ComponentTextureButton(
-            int x,
-            int y,
-            int textureXPos,
-            int textureYPos,
-            int xSize,
-            int ySize,
-            int id,
-            GUIBase gui,
-            String displayString,
-            String hoverText,
-            ResourceLocation texture) {
+    public ComponentTextureButton(int x, int y, int textureXPos, int textureYPos, int xSize, int ySize, int id,
+            GUIBase gui, String displayString, String hoverText, ResourceLocation texture) {
         super(x, y, xSize, ySize, id, gui, displayString, hoverText);
         this.textureXPos = textureXPos;
         this.textureYPos = textureYPos;
@@ -63,7 +55,11 @@ public class ComponentTextureButton extends ComponentButton {
                 l = 16777120;
             }
             this.drawCenteredString(
-                    fontRendererObj, this.displayString, this.x + this.xSize / 2, this.y + (this.ySize - 8) / 2, l);
+                    fontRendererObj,
+                    this.displayString,
+                    this.x + this.xSize / 2,
+                    this.y + (this.ySize - 8) / 2,
+                    l);
         } else {
             int xPos = this.x;
             int yPos = this.y;

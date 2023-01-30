@@ -1,11 +1,14 @@
 package com.brandon3055.brandonscore.common.utills;
 
-import com.brandon3055.brandonscore.common.lib.References;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
 import java.text.DecimalFormat;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import com.brandon3055.brandonscore.common.lib.References;
+
+import cpw.mods.fml.common.network.ByteBufUtils;
+import io.netty.buffer.ByteBuf;
 
 /**
  * Created by Brandon on 31/12/2014.
@@ -99,9 +102,9 @@ public class DataUtills {
             case References.DOUBLE_ID:
                 ItemNBTHelper.setDouble(stack, name, (Double) value);
                 break;
-                //			case References.CHAR_ID:
-                //				ItemNBTHelper.setChar(stack, value.name, (Byte)value.value);
-                //				break;
+            // case References.CHAR_ID:
+            // ItemNBTHelper.setChar(stack, value.name, (Byte)value.value);
+            // break;
             case References.STRING_ID:
                 ItemNBTHelper.setString(stack, name, (String) value);
                 break;
@@ -131,9 +134,9 @@ public class DataUtills {
             case References.DOUBLE_ID:
                 compound.setDouble(name, (Double) value);
                 break;
-                //			case References.CHAR_ID:
-                //				ItemNBTHelper.setChar(stack, value.name, (Byte)value.value);
-                //				break;
+            // case References.CHAR_ID:
+            // ItemNBTHelper.setChar(stack, value.name, (Byte)value.value);
+            // break;
             case References.STRING_ID:
                 compound.setString(name, (String) value);
                 break;
@@ -157,7 +160,7 @@ public class DataUtills {
                 return ItemNBTHelper.getFloat(stack, name, (Float) defaultExpected);
             case References.DOUBLE_ID:
                 return ItemNBTHelper.getDouble(stack, name, (Double) defaultExpected);
-                // case References.CHAR_ID:
+            // case References.CHAR_ID:
             case References.STRING_ID:
                 return ItemNBTHelper.getString(stack, name, (String) defaultExpected);
             case References.BOOLEAN_ID:
@@ -180,7 +183,7 @@ public class DataUtills {
                 return ItemNBTHelper.getFloat(stack, name, 0F);
             case References.DOUBLE_ID:
                 return ItemNBTHelper.getDouble(stack, name, 0D);
-                // case References.CHAR_ID:
+            // case References.CHAR_ID:
             case References.STRING_ID:
                 return ItemNBTHelper.getString(stack, name, "");
             case References.BOOLEAN_ID:
@@ -189,8 +192,8 @@ public class DataUtills {
         return null;
     }
 
-    public static Object readObjectFromCompound(
-            NBTTagCompound compound, int dataType, String name, Object defaultExpected) {
+    public static Object readObjectFromCompound(NBTTagCompound compound, int dataType, String name,
+            Object defaultExpected) {
         switch (dataType) {
             case References.BYTE_ID:
                 return compound.hasKey(name) ? compound.getByte(name) : (Byte) defaultExpected;
@@ -204,7 +207,7 @@ public class DataUtills {
                 return compound.hasKey(name) ? compound.getFloat(name) : (Float) defaultExpected;
             case References.DOUBLE_ID:
                 return compound.hasKey(name) ? compound.getDouble(name) : (Double) defaultExpected;
-                // case References.CHAR_ID:
+            // case References.CHAR_ID:
             case References.STRING_ID:
                 return compound.hasKey(name) ? compound.getString(name) : (String) defaultExpected;
             case References.BOOLEAN_ID:
@@ -214,6 +217,7 @@ public class DataUtills {
     }
 
     public static class IntPair {
+
         public int i1;
         public int i2;
 
@@ -224,6 +228,7 @@ public class DataUtills {
     }
 
     public static class XZPair<X, Z> {
+
         public X x;
         public Z z;
 
@@ -242,6 +247,7 @@ public class DataUtills {
     }
 
     public static class XYZTri<X, Y, Z> {
+
         public X x;
         public Y y;
         public Z z;
@@ -255,7 +261,7 @@ public class DataUtills {
 
     public static String formatFileSize(long size) {
         if (size <= 0) return "0";
-        final String[] units = new String[] {"B", "kB", "MB", "GB", "TB"};
+        final String[] units = new String[] { "B", "kB", "MB", "GB", "TB" };
         int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
         return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }

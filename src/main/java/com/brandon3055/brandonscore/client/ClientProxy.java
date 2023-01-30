@@ -1,10 +1,11 @@
 package com.brandon3055.brandonscore.client;
 
-import com.brandon3055.brandonscore.common.CommonProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+
+import com.brandon3055.brandonscore.common.CommonProxy;
 
 /**
  * Created by Brandon on 14/5/2015.

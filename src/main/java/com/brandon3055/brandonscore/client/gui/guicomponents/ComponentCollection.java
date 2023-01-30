@@ -2,6 +2,7 @@ package com.brandon3055.brandonscore.client.gui.guicomponents;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.client.Minecraft;
 
 /**
@@ -49,28 +50,23 @@ public class ComponentCollection extends ComponentBase {
 
     @Override
     public final void renderBackground(Minecraft minecraft, int offsetX, int offsetY, int mouseX, int mouseY) {
-        for (ComponentBase component : components)
-            if (isComponentEnabled(component)) {
-                component.renderBackground(
-                        minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
-            }
+        for (ComponentBase component : components) if (isComponentEnabled(component)) {
+            component.renderBackground(minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
+        }
     }
 
     @Override
     public final void renderForground(Minecraft minecraft, int offsetX, int offsetY, int mouseX, int mouseY) {
-        for (ComponentBase component : components)
-            if (isComponentEnabled(component)) {
-                component.renderForground(
-                        minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
-            }
+        for (ComponentBase component : components) if (isComponentEnabled(component)) {
+            component.renderForground(minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
+        }
     }
 
     @Override
     public final void renderFinal(Minecraft minecraft, int offsetX, int offsetY, int mouseX, int mouseY) {
-        for (ComponentBase component : components)
-            if (isComponentEnabled(component)) {
-                component.renderFinal(minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
-            }
+        for (ComponentBase component : components) if (isComponentEnabled(component)) {
+            component.renderFinal(minecraft, offsetX + this.x, offsetY + this.y, mouseX - this.x, mouseY - this.y);
+        }
     }
 
     @Override

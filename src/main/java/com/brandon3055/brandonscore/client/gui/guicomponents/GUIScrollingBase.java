@@ -46,10 +46,10 @@ public abstract class GUIScrollingBase extends GUIBase {
         super.mouseClicked(x, y, button);
         if (disableScrollBar) return;
         clickedY = y;
-        if ((x - guiLeft + 17) > 0
-                && (x - guiLeft + 17) < 17
+        if ((x - guiLeft + 17) > 0 && (x - guiLeft + 17) < 17
                 && clickedY - guiTop - 20 > barPosition
-                && clickedY - guiTop - 20 < barPosition + 38) scrollPressed = true;
+                && clickedY - guiTop - 20 < barPosition + 38)
+            scrollPressed = true;
     }
 
     @Override
@@ -70,6 +70,7 @@ public abstract class GUIScrollingBase extends GUIBase {
     }
 
     /**
-     * @param position New bar position between 0 (top) and 1 (bottom)*/
+     * @param position New bar position between 0 (top) and 1 (bottom)
+     */
     public abstract void barMoved(double position);
 }

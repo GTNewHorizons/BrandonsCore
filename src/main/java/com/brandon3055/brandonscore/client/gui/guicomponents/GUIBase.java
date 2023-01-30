@@ -1,20 +1,20 @@
 package com.brandon3055.brandonscore.client.gui.guicomponents;
 
 /**
- * Created by Brandon on 25/12/2014.
- * This class is copied from open blocks
+ * Created by Brandon on 25/12/2014. This class is copied from open blocks
  */
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.inventory.Container;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 public abstract class GUIBase extends GuiContainer {
 
     protected ComponentCollection collection;
-    /**used to prevent multiple buttons being pressed wen overlapping components are changed*/
+    /** used to prevent multiple buttons being pressed wen overlapping components are changed */
     protected boolean buttonPressed = false;
 
     public GUIBase(Container container, int xSize, int ySize) {
@@ -133,7 +133,9 @@ public abstract class GUIBase extends GuiContainer {
         return ySize;
     }
 
-    /**This can be used by components to contact the GUI and the gui can then do some custom operation for that component
-     * Added so ComponentTextField can let the gui know when it has been changed*/
+    /**
+     * This can be used by components to contact the GUI and the gui can then do some custom operation for that
+     * component Added so ComponentTextField can let the gui know when it has been changed
+     */
     public void componentCallBack(ComponentBase component) {}
 }

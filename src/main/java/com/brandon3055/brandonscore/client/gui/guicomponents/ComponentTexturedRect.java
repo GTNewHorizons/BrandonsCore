@@ -2,12 +2,14 @@ package com.brandon3055.brandonscore.client.gui.guicomponents;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 /**
  * Created by Brandon on 29/12/2014.
  */
 public class ComponentTexturedRect extends ComponentBase {
+
     private int width;
     private int height;
     private int texX = 0;
@@ -22,8 +24,8 @@ public class ComponentTexturedRect extends ComponentBase {
         this.texture = texture;
     }
 
-    public ComponentTexturedRect(
-            int x, int y, int texX, int texY, int width, int height, ResourceLocation texture, boolean transparent) {
+    public ComponentTexturedRect(int x, int y, int texX, int texY, int width, int height, ResourceLocation texture,
+            boolean transparent) {
         super(x, y);
         this.width = width;
         this.height = height;

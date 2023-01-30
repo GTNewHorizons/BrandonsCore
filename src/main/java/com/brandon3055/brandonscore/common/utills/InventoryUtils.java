@@ -3,12 +3,8 @@ package com.brandon3055.brandonscore.common.utills;
 /**
  * Everything in this class is copied from openblocks
  */
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import java.util.*;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -23,15 +19,19 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 public class InventoryUtils {
 
     /***
-     * Try to merge the supplied stack into the supplied slot in the target
-     * inventory
+     * Try to merge the supplied stack into the supplied slot in the target inventory
      *
-     * @param targetInventory
-     *            Although it doesn't return anything, it'll REDUCE the stack
-     *            size of the stack that you pass in
+     * @param targetInventory Although it doesn't return anything, it'll REDUCE the stack size of the stack that you
+     *                        pass in
      *
      * @param slot
      * @param stack
@@ -67,23 +67,18 @@ public class InventoryUtils {
         insertItemIntoInventory(inventory, stack, ForgeDirection.UNKNOWN, -1);
     }
 
-    public static void insertItemIntoInventory(
-            IInventory inventory, ItemStack stack, ForgeDirection side, int intoSlot) {
+    public static void insertItemIntoInventory(IInventory inventory, ItemStack stack, ForgeDirection side,
+            int intoSlot) {
         insertItemIntoInventory(inventory, stack, side, intoSlot, true);
     }
 
-    public static void insertItemIntoInventory(
-            IInventory inventory, ItemStack stack, ForgeDirection side, int intoSlot, boolean doMove) {
+    public static void insertItemIntoInventory(IInventory inventory, ItemStack stack, ForgeDirection side, int intoSlot,
+            boolean doMove) {
         insertItemIntoInventory(inventory, stack, side, intoSlot, doMove, true);
     }
 
-    public static void insertItemIntoInventory(
-            IInventory inventory,
-            ItemStack stack,
-            ForgeDirection side,
-            int intoSlot,
-            boolean doMove,
-            boolean canStack) {
+    public static void insertItemIntoInventory(IInventory inventory, ItemStack stack, ForgeDirection side, int intoSlot,
+            boolean doMove, boolean canStack) {
         if (stack == null) return;
 
         final int sideId = side.ordinal();
@@ -91,8 +86,10 @@ public class InventoryUtils {
 
         // if we're not meant to move, make a clone of the inventory
         if (!doMove) {
-            GenericInventory copy =
-                    new GenericInventory("temporary.inventory", false, targetInventory.getSizeInventory());
+            GenericInventory copy = new GenericInventory(
+                    "temporary.inventory",
+                    false,
+                    targetInventory.getSizeInventory());
             copy.copyFrom(inventory);
             targetInventory = copy;
         }
@@ -124,51 +121,28 @@ public class InventoryUtils {
         }
     }
 
-    public static int moveItemInto(
-            IInventory fromInventory,
-            int fromSlot,
-            Object target,
-            int intoSlot,
-            int maxAmount,
-            ForgeDirection direction,
-            boolean doMove) {
+    public static int moveItemInto(IInventory fromInventory, int fromSlot, Object target, int intoSlot, int maxAmount,
+            ForgeDirection direction, boolean doMove) {
         return moveItemInto(fromInventory, fromSlot, target, intoSlot, maxAmount, direction, doMove, true);
     }
 
     /***
-     * Move an item from the fromInventory, into the target. The target can be
-     * an inventory or pipe.
-     * Double checks are automagically wrapped. If you're not bothered what slot
-     * you insert into, pass -1 for intoSlot. If you're passing false for
-     * doMove, it'll create a dummy inventory and its calculations on that
-     * instead
+     * Move an item from the fromInventory, into the target. The target can be an inventory or pipe. Double checks are
+     * automagically wrapped. If you're not bothered what slot you insert into, pass -1 for intoSlot. If you're passing
+     * false for doMove, it'll create a dummy inventory and its calculations on that instead
      *
-     * @param fromInventory
-     *            the inventory the item is coming from
-     * @param fromSlot
-     *            the slot the item is coming from
-     * @param target
-     *            the inventory you want the item to be put into. can be BC pipe
-     *            or IInventory
-     * @param intoSlot
-     *            the target slot. Pass -1 for any slot
-     * @param maxAmount
-     *            The maximum amount you wish to pass
-     * @param direction
-     *            The direction of the move. Pass UNKNOWN if not applicable
+     * @param fromInventory the inventory the item is coming from
+     * @param fromSlot      the slot the item is coming from
+     * @param target        the inventory you want the item to be put into. can be BC pipe or IInventory
+     * @param intoSlot      the target slot. Pass -1 for any slot
+     * @param maxAmount     The maximum amount you wish to pass
+     * @param direction     The direction of the move. Pass UNKNOWN if not applicable
      * @param doMove
      * @param canStack
      * @return The amount of items moved
      */
-    public static int moveItemInto(
-            IInventory fromInventory,
-            int fromSlot,
-            Object target,
-            int intoSlot,
-            int maxAmount,
-            ForgeDirection direction,
-            boolean doMove,
-            boolean canStack) {
+    public static int moveItemInto(IInventory fromInventory, int fromSlot, Object target, int intoSlot, int maxAmount,
+            ForgeDirection direction, boolean doMove, boolean canStack) {
 
         fromInventory = InventoryUtils.getInventory(fromInventory);
 
@@ -194,8 +168,8 @@ public class InventoryUtils {
             ForgeDirection side = direction.getOpposite();
             // try insert the item into the target inventory. this'll reduce the
             // stackSize of our stack
-            InventoryUtils.insertItemIntoInventory(
-                    targetInventory, clonedSourceStack, side, intoSlot, doMove, canStack);
+            InventoryUtils
+                    .insertItemIntoInventory(targetInventory, clonedSourceStack, side, intoSlot, doMove, canStack);
             inserted = amountToMove - clonedSourceStack.stackSize;
         }
 
@@ -219,18 +193,22 @@ public class InventoryUtils {
         final int x = te.xCoord;
         final int y = te.yCoord;
         final int z = te.zCoord;
-        if (world.getBlock(x - 1, y, z) == Blocks.chest)
-            return new InventoryLargeChest(
-                    "Large chest", (IInventory) world.getTileEntity(x - 1, y, z), (IInventory) te);
-        if (world.getBlock(x + 1, y, z) == Blocks.chest)
-            return new InventoryLargeChest(
-                    "Large chest", (IInventory) te, (IInventory) world.getTileEntity(x + 1, y, z));
-        if (world.getBlock(x, y, z - 1) == Blocks.chest)
-            return new InventoryLargeChest(
-                    "Large chest", (IInventory) world.getTileEntity(x, y, z - 1), (IInventory) te);
-        if (world.getBlock(x, y, z + 1) == Blocks.chest)
-            return new InventoryLargeChest(
-                    "Large chest", (IInventory) te, (IInventory) world.getTileEntity(x, y, z + 1));
+        if (world.getBlock(x - 1, y, z) == Blocks.chest) return new InventoryLargeChest(
+                "Large chest",
+                (IInventory) world.getTileEntity(x - 1, y, z),
+                (IInventory) te);
+        if (world.getBlock(x + 1, y, z) == Blocks.chest) return new InventoryLargeChest(
+                "Large chest",
+                (IInventory) te,
+                (IInventory) world.getTileEntity(x + 1, y, z));
+        if (world.getBlock(x, y, z - 1) == Blocks.chest) return new InventoryLargeChest(
+                "Large chest",
+                (IInventory) world.getTileEntity(x, y, z - 1),
+                (IInventory) te);
+        if (world.getBlock(x, y, z + 1) == Blocks.chest) return new InventoryLargeChest(
+                "Large chest",
+                (IInventory) te,
+                (IInventory) world.getTileEntity(x, y, z + 1));
         return (te instanceof IInventory) ? (IInventory) te : null;
     }
 
@@ -265,8 +243,7 @@ public class InventoryUtils {
     }
 
     /***
-     * Get the indexes of all slots containing a stack of the supplied item
-     * type.
+     * Get the indexes of all slots containing a stack of the supplied item type.
      *
      * @param inventory
      * @param stack
@@ -352,18 +329,13 @@ public class InventoryUtils {
         return null;
     }
 
-    public static int moveItemsFromOneOfSides(
-            TileEntity te, IInventory inv, int maxAmount, int intoSlot, Set<ForgeDirection> sides) {
+    public static int moveItemsFromOneOfSides(TileEntity te, IInventory inv, int maxAmount, int intoSlot,
+            Set<ForgeDirection> sides) {
         return moveItemsFromOneOfSides(te, inv, null, maxAmount, intoSlot, sides);
     }
 
-    public static int moveItemsFromOneOfSides(
-            TileEntity te,
-            IInventory inv,
-            ItemStack filterStack,
-            int maxAmount,
-            int intoSlot,
-            Set<ForgeDirection> sides) {
+    public static int moveItemsFromOneOfSides(TileEntity te, IInventory inv, ItemStack filterStack, int maxAmount,
+            int intoSlot, Set<ForgeDirection> sides) {
         List<ForgeDirection> shuffledSides = Lists.newArrayList(sides);
         Collections.shuffle(shuffledSides);
 
@@ -382,8 +354,8 @@ public class InventoryUtils {
                 else slots = getSlotsWithStack(neighbor, filterStack);
 
                 for (Integer slot : slots) {
-                    int moved = InventoryUtils.moveItemInto(
-                            neighbor, slot, ourInventory, intoSlot, maxAmount, dir.getOpposite(), true);
+                    int moved = InventoryUtils
+                            .moveItemInto(neighbor, slot, ourInventory, intoSlot, maxAmount, dir.getOpposite(), true);
                     if (moved > 0) return moved;
                 }
             }
@@ -392,13 +364,11 @@ public class InventoryUtils {
     }
 
     /**
-     * Tests to see if an item stack can be inserted in to an inventory Does not
-     * perform the insertion, only tests the possibility
+     * Tests to see if an item stack can be inserted in to an inventory Does not perform the insertion, only tests the
+     * possibility
      *
-     * @param inventory
-     *            The inventory to insert the stack into
-     * @param item
-     *            the stack to insert
+     * @param inventory The inventory to insert the stack into
+     * @param item      the stack to insert
      * @return the amount of items that could be put in to the stack
      */
     public static int testInventoryInsertion(IInventory inventory, ItemStack item) {
@@ -406,8 +376,7 @@ public class InventoryUtils {
         if (inventory == null) return 0;
         int slotCount = inventory.getSizeInventory();
         /*
-         * Allows counting down the item size, without cloning or changing the
-         * object
+         * Allows counting down the item size, without cloning or changing the object
          */
         int itemSizeCounter = item.stackSize;
         for (int i = 0; i < slotCount && itemSizeCounter > 0; i++) {
@@ -415,12 +384,12 @@ public class InventoryUtils {
             if (!inventory.isItemValidForSlot(i, item)) continue;
             ItemStack inventorySlot = inventory.getStackInSlot(i);
             /*
-             * If the slot is empty, dump the biggest stack we can, taking in to
-             * consideration, the remaining amount of stack
+             * If the slot is empty, dump the biggest stack we can, taking in to consideration, the remaining amount of
+             * stack
              */
             if (inventorySlot == null) {
-                itemSizeCounter -=
-                        Math.min(Math.min(itemSizeCounter, inventory.getInventoryStackLimit()), item.getMaxStackSize());
+                itemSizeCounter -= Math
+                        .min(Math.min(itemSizeCounter, inventory.getInventoryStackLimit()), item.getMaxStackSize());
             }
             /* If the slot is not empty, check that these items stack */
             else if (areMergeCandidates(item, inventorySlot)) {
@@ -458,8 +427,8 @@ public class InventoryUtils {
         return result;
     }
 
-    public static int moveItemsToOneOfSides(
-            TileEntity te, IInventory inv, int fromSlot, int maxAmount, Set<ForgeDirection> sides) {
+    public static int moveItemsToOneOfSides(TileEntity te, IInventory inv, int fromSlot, int maxAmount,
+            Set<ForgeDirection> sides) {
         // wrap it. Sure, we dont need to really as this'll never be a double
         // chest but, whatevs. (M?)
         final IInventory inventory = getInventory(inv);
@@ -493,9 +462,9 @@ public class InventoryUtils {
     }
 
     public static boolean tryMergeStacks(ItemStack stackToMerge, ItemStack stackInSlot) {
-        if (stackInSlot == null
-                || !stackInSlot.isItemEqual(stackToMerge)
-                || !ItemStack.areItemStackTagsEqual(stackToMerge, stackInSlot)) return false;
+        if (stackInSlot == null || !stackInSlot.isItemEqual(stackToMerge)
+                || !ItemStack.areItemStackTagsEqual(stackToMerge, stackInSlot))
+            return false;
 
         int newStackSize = stackInSlot.stackSize + stackToMerge.stackSize;
 
@@ -543,19 +512,13 @@ public class InventoryUtils {
         inventory.markDirty();
     }
 
-    public static void swapStacks(
-            ISidedInventory inventory, int slot1, ForgeDirection side1, int slot2, ForgeDirection side2) {
+    public static void swapStacks(ISidedInventory inventory, int slot1, ForgeDirection side1, int slot2,
+            ForgeDirection side2) {
         swapStacks(inventory, slot1, side1, slot2, side2, true, true);
     }
 
-    public static void swapStacks(
-            ISidedInventory inventory,
-            int slot1,
-            ForgeDirection side1,
-            int slot2,
-            ForgeDirection side2,
-            boolean copy,
-            boolean validate) {
+    public static void swapStacks(ISidedInventory inventory, int slot1, ForgeDirection side1, int slot2,
+            ForgeDirection side2, boolean copy, boolean validate) {
         Preconditions.checkElementIndex(slot1, inventory.getSizeInventory(), "input slot id");
         Preconditions.checkElementIndex(slot2, inventory.getSizeInventory(), "output slot id");
 

@@ -2,9 +2,11 @@ package com.brandon3055.brandonscore.client.utills;
 
 import java.util.Iterator;
 import java.util.List;
+
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -12,6 +14,7 @@ import org.lwjgl.opengl.GL12;
  * Created by Brandon on 28/06/2014.
  */
 public class GuiHelper {
+
     public static final double PXL128 = 0.0078125;
     public static final double PXL256 = 0.00390625;
 
@@ -23,17 +26,8 @@ public class GuiHelper {
         drawTexturedRect(x, y, width, height, u, v, width, height, 0, PXL256);
     }
 
-    public static void drawTexturedRect(
-            double x,
-            double y,
-            double width,
-            double height,
-            int u,
-            int v,
-            int uSize,
-            int vSize,
-            double zLevel,
-            double pxl) {
+    public static void drawTexturedRect(double x, double y, double width, double height, int u, int v, int uSize,
+            int vSize, double zLevel, double pxl) {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(x, y + height, zLevel, u * pxl, (v + vSize) * pxl);
@@ -43,8 +37,8 @@ public class GuiHelper {
         tessellator.draw();
     }
 
-    public static void drawHoveringText(
-            List list, int x, int y, FontRenderer font, float fade, double scale, int guiWidth, int guiHeight) {
+    public static void drawHoveringText(List list, int x, int y, FontRenderer font, float fade, double scale,
+            int guiWidth, int guiHeight) {
         if (!list.isEmpty()) {
             GL11.glPushMatrix();
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
@@ -113,8 +107,8 @@ public class GuiHelper {
         }
     }
 
-    public static void drawGradientRect(
-            int x1, int y1, int x2, int y2, int colour1, int colour2, float fade, double scale) {
+    public static void drawGradientRect(int x1, int y1, int x2, int y2, int colour1, int colour2, float fade,
+            double scale) {
         float f = ((colour1 >> 24 & 255) / 255.0F) * fade;
         float f1 = (float) (colour1 >> 16 & 255) / 255.0F;
         float f2 = (float) (colour1 >> 8 & 255) / 255.0F;

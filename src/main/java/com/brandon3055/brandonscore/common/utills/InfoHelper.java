@@ -1,16 +1,20 @@
 package com.brandon3055.brandonscore.common.utills;
 
-import cofh.api.energy.IEnergyContainerItem;
 import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+
 import org.lwjgl.input.Keyboard;
+
+import cofh.api.energy.IEnergyContainerItem;
 
 /**
  * Created by Brandon on 1/07/2014.
  */
 public class InfoHelper {
+
     @SuppressWarnings("unchecked")
     public static void addEnergyInfo(ItemStack stack, List list) {
         IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
@@ -33,33 +37,41 @@ public class InfoHelper {
         String[] lore = getLore(stack);
         if (addLeadingLine) list.add("");
         if (lore == null) {
-            list.add("" + EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_PURPLE
-                    + "Invalid lore localization! (something is broken)");
+            list.add(
+                    "" + EnumChatFormatting.ITALIC
+                            + ""
+                            + EnumChatFormatting.DARK_PURPLE
+                            + "Invalid lore localization! (something is broken)");
             return;
         }
         for (String s : lore) list.add("" + EnumChatFormatting.ITALIC + "" + EnumChatFormatting.DARK_PURPLE + s);
     }
 
-    /**Add lore with a blank line above it*/
+    /** Add lore with a blank line above it */
     public static void addLore(ItemStack stack, List list) {
         addLore(stack, list, true);
     }
 
-    /**Add the standard energy and lore information*/
+    /** Add the standard energy and lore information */
     @SuppressWarnings("unchecked")
     public static void addEnergyAndLore(ItemStack stack, List list) {
-        if (!isShiftKeyDown())
-            list.add(StatCollector.translateToLocal("info.de.hold.txt") + " " + EnumChatFormatting.AQUA + ""
-                    + EnumChatFormatting.ITALIC + StatCollector.translateToLocal("info.de.shift.txt")
-                    + EnumChatFormatting.RESET + " " + EnumChatFormatting.GRAY
-                    + StatCollector.translateToLocal("info.de.forDetails.txt"));
+        if (!isShiftKeyDown()) list.add(
+                StatCollector.translateToLocal("info.de.hold.txt") + " "
+                        + EnumChatFormatting.AQUA
+                        + ""
+                        + EnumChatFormatting.ITALIC
+                        + StatCollector.translateToLocal("info.de.shift.txt")
+                        + EnumChatFormatting.RESET
+                        + " "
+                        + EnumChatFormatting.GRAY
+                        + StatCollector.translateToLocal("info.de.forDetails.txt"));
         else {
             addEnergyInfo(stack, list);
             addLore(stack, list);
         }
     }
 
-    /**returns lore text or an empty string if the lore is not set*/
+    /** returns lore text or an empty string if the lore is not set */
     public static String[] getLore(ItemStack stack) {
         String unlocalizeLore = stack.getItem().getUnlocalizedName() + ".lore";
         String rawLore = StatCollector.translateToLocal(unlocalizeLore);
@@ -101,11 +113,16 @@ public class InfoHelper {
 
     @SuppressWarnings("unchecked")
     public static boolean holdShiftForDetails(List list, boolean inverted) {
-        if (isShiftKeyDown() == inverted)
-            list.add(StatCollector.translateToLocal("info.de.hold.txt") + " " + EnumChatFormatting.AQUA + ""
-                    + EnumChatFormatting.ITALIC + StatCollector.translateToLocal("info.de.shift.txt")
-                    + EnumChatFormatting.RESET + " " + EnumChatFormatting.GRAY
-                    + StatCollector.translateToLocal("info.de.forDetails.txt"));
+        if (isShiftKeyDown() == inverted) list.add(
+                StatCollector.translateToLocal("info.de.hold.txt") + " "
+                        + EnumChatFormatting.AQUA
+                        + ""
+                        + EnumChatFormatting.ITALIC
+                        + StatCollector.translateToLocal("info.de.shift.txt")
+                        + EnumChatFormatting.RESET
+                        + " "
+                        + EnumChatFormatting.GRAY
+                        + StatCollector.translateToLocal("info.de.forDetails.txt"));
         return isShiftKeyDown();
     }
 
@@ -113,11 +130,12 @@ public class InfoHelper {
         return holdShiftForDetails(list, false);
     }
 
-    /**"Information Text Colour" The colour used for custom tool tip info*/
+    /** "Information Text Colour" The colour used for custom tool tip info */
     public static String ITC() {
         return "" + EnumChatFormatting.RESET + "" + EnumChatFormatting.DARK_AQUA;
     }
-    /**"Highlighted Information Text Colour" The colour used for parts that need to stand out*/
+
+    /** "Highlighted Information Text Colour" The colour used for parts that need to stand out */
     public static String HITC() {
         return "" + EnumChatFormatting.RESET + "" + EnumChatFormatting.ITALIC + "" + EnumChatFormatting.GOLD;
     }

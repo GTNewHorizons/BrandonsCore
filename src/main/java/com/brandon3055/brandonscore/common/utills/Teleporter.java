@@ -1,7 +1,5 @@
 package com.brandon3055.brandonscore.common.utills;
 
-import com.brandon3055.brandonscore.BrandonsCore;
-import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,9 +12,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
+import com.brandon3055.brandonscore.BrandonsCore;
+import cpw.mods.fml.common.FMLCommonHandler;
+
 public class Teleporter {
 
     public static class TeleportLocation {
+
         protected double xCoord;
         protected double yCoord;
         protected double zCoord;
@@ -200,11 +202,12 @@ public class Teleporter {
             EntityPlayerMP player = (EntityPlayerMP) entity;
             player.closeScreen(); // added
             player.dimension = destination.dimension;
-            player.playerNetServerHandler.sendPacket(new S07PacketRespawn(
-                    player.dimension,
-                    player.worldObj.difficultySetting,
-                    destinationWorld.getWorldInfo().getTerrainType(),
-                    player.theItemInWorldManager.getGameType()));
+            player.playerNetServerHandler.sendPacket(
+                    new S07PacketRespawn(
+                            player.dimension,
+                            player.worldObj.difficultySetting,
+                            destinationWorld.getWorldInfo().getTerrainType(),
+                            player.theItemInWorldManager.getGameType()));
             ((WorldServer) startWorld).getPlayerManager().removePlayer(player);
 
             startWorld.playerEntities.remove(player);
@@ -220,10 +223,14 @@ public class Teleporter {
         }
 
         entity.setLocationAndAngles(
-                destination.xCoord, destination.yCoord, destination.zCoord, destination.yaw, destination.pitch);
+                destination.xCoord,
+                destination.yCoord,
+                destination.zCoord,
+                destination.yaw,
+                destination.pitch);
 
-        ((WorldServer) destinationWorld)
-                .theChunkProviderServer.loadChunk((int) destination.xCoord >> 4, (int) destination.zCoord >> 4);
+        ((WorldServer) destinationWorld).theChunkProviderServer
+                .loadChunk((int) destination.xCoord >> 4, (int) destination.zCoord >> 4);
 
         destinationWorld.theProfiler.startSection("placing");
         if (interDimensional) {
@@ -244,11 +251,19 @@ public class Teleporter {
             entity.setWorld(destinationWorld);
         }
         entity.setLocationAndAngles(
-                destination.xCoord, destination.yCoord, destination.zCoord, destination.yaw, entity.rotationPitch);
+                destination.xCoord,
+                destination.yCoord,
+                destination.zCoord,
+                destination.yaw,
+                entity.rotationPitch);
 
         destinationWorld.updateEntityWithOptionalForce(entity, false);
         entity.setLocationAndAngles(
-                destination.xCoord, destination.yCoord, destination.zCoord, destination.yaw, entity.rotationPitch);
+                destination.xCoord,
+                destination.yCoord,
+                destination.zCoord,
+                destination.yaw,
+                entity.rotationPitch);
 
         if ((entity instanceof EntityPlayerMP)) {
             EntityPlayerMP player = (EntityPlayerMP) entity;
@@ -268,8 +283,8 @@ public class Teleporter {
         if (((entity instanceof EntityPlayerMP)) && interDimensional) {
             EntityPlayerMP player = (EntityPlayerMP) entity;
             player.theItemInWorldManager.setWorld((WorldServer) destinationWorld);
-            player.mcServer.getConfigurationManager().updateTimeAndWeatherForPlayer(player, (WorldServer)
-                    destinationWorld);
+            player.mcServer.getConfigurationManager()
+                    .updateTimeAndWeatherForPlayer(player, (WorldServer) destinationWorld);
             player.mcServer.getConfigurationManager().syncPlayerInventory(player);
 
             for (PotionEffect potionEffect : (Iterable<PotionEffect>) player.getActivePotionEffects()) {
@@ -278,12 +293,17 @@ public class Teleporter {
 
             player.playerNetServerHandler.sendPacket(
                     new S1FPacketSetExperience(player.experience, player.experienceTotal, player.experienceLevel));
-            FMLCommonHandler.instance()
-                    .firePlayerChangedDimensionEvent(
-                            player, startWorld.provider.dimensionId, destinationWorld.provider.dimensionId);
+            FMLCommonHandler.instance().firePlayerChangedDimensionEvent(
+                    player,
+                    startWorld.provider.dimensionId,
+                    destinationWorld.provider.dimensionId);
         }
         entity.setLocationAndAngles(
-                destination.xCoord, destination.yCoord, destination.zCoord, destination.yaw, entity.rotationPitch);
+                destination.xCoord,
+                destination.yCoord,
+                destination.zCoord,
+                destination.yaw,
+                entity.rotationPitch);
 
         if (mount != null) {
             entity.mountEntity(mount);

@@ -1,9 +1,12 @@
 package com.brandon3055.brandonscore;
 
+import java.util.Map;
+
 import com.brandon3055.brandonscore.common.CommonProxy;
 import com.brandon3055.brandonscore.common.handlers.FileHandler;
 import com.brandon3055.brandonscore.common.handlers.ProcessHandler;
 import com.brandon3055.brandonscore.common.utills.LogHelper;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -11,10 +14,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.relauncher.Side;
-import java.util.Map;
 
 @Mod(modid = BrandonsCore.MODID, version = BrandonsCore.VERSION, name = BrandonsCore.MODNAME)
 public class BrandonsCore {
+
     public static final String MODNAME = "Brandon's Core";
     public static final String MODID = "BrandonsCore";
     public static final String VERSION = "GRADLETOKEN_VERSION";

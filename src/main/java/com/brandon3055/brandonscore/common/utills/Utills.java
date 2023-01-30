@@ -1,7 +1,5 @@
 package com.brandon3055.brandonscore.common.utills;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.GameData;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,12 +8,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.GameData;
+
 /**
  * Created by Brandon on 25/07/2014.
  */
 public class Utills {
 
     public static IEntitySelector selectLivingBase = new IEntitySelector() {
+
         @Override
         public boolean isEntityApplicable(Entity entity) {
             return entity instanceof EntityLivingBase;
@@ -23,6 +25,7 @@ public class Utills {
     };
 
     public static IEntitySelector selectPlayer = new IEntitySelector() {
+
         @Override
         public boolean isEntityApplicable(Entity entity) {
             return entity instanceof EntityPlayer;
@@ -81,6 +84,7 @@ public class Utills {
 
     /**
      * Calculates the exact distance between two points in 3D space
+     * 
      * @param x1 point A x
      * @param y1 point A y
      * @param z1 point A z
@@ -98,6 +102,7 @@ public class Utills {
 
     /**
      * Calculates the exact distance between two points in 2D space
+     * 
      * @param x1 point A x
      * @param z1 point A z
      * @param x2 point B x
@@ -195,7 +200,7 @@ public class Utills {
         return result;
     }
 
-    /**Simple method to convert a Double object to a primitive int*/
+    /** Simple method to convert a Double object to a primitive int */
     public static int toInt(double d) {
         return (int) d;
     }

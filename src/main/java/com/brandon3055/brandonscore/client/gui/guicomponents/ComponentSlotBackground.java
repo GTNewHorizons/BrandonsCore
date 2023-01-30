@@ -33,18 +33,14 @@ public class ComponentSlotBackground extends ComponentBase {
     @Override
     public void renderForground(Minecraft minecraft, int offsetX, int offsetY, int mouseX, int mouseY) {}
 
-    public static ComponentCollection addInventorySlots(
-            ComponentCollection c, int xOffset, int yOffset, int lockedSlot) {
-        for (int x = 0; x < 9; x++)
-            if (x != lockedSlot)
-                c.addComponent(new ComponentSlotBackground(xOffset + x * 18, yOffset + 58))
-                        .setGroup("INVENTORY");
+    public static ComponentCollection addInventorySlots(ComponentCollection c, int xOffset, int yOffset,
+            int lockedSlot) {
+        for (int x = 0; x < 9; x++) if (x != lockedSlot)
+            c.addComponent(new ComponentSlotBackground(xOffset + x * 18, yOffset + 58)).setGroup("INVENTORY");
 
         for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 9; x++)
-                if (x + y * 9 + 9 != lockedSlot)
-                    c.addComponent(new ComponentSlotBackground(xOffset + x * 18, yOffset + y * 18))
-                            .setGroup("INVENTORY");
+            for (int x = 0; x < 9; x++) if (x + y * 9 + 9 != lockedSlot)
+                c.addComponent(new ComponentSlotBackground(xOffset + x * 18, yOffset + y * 18)).setGroup("INVENTORY");
         }
 
         return c;
