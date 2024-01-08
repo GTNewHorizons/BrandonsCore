@@ -1,6 +1,2 @@
 repositories {
-	maven {
-		name 'CurseMaven'
-		url 'https://www.cursemaven.com'
-	}
 }
