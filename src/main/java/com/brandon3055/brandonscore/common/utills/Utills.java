@@ -84,7 +84,7 @@ public class Utills {
 
     /**
      * Calculates the exact distance between two points in 3D space
-     * 
+     *
      * @param x1 point A x
      * @param y1 point A y
      * @param z1 point A z
@@ -102,7 +102,7 @@ public class Utills {
 
     /**
      * Calculates the exact distance between two points in 2D space
-     * 
+     *
      * @param x1 point A x
      * @param z1 point A z
      * @param x2 point B x
