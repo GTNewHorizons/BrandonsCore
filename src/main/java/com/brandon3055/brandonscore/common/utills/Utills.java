@@ -14,6 +14,7 @@ import cpw.mods.fml.common.registry.GameData;
 /**
  * Created by Brandon on 25/07/2014.
  */
+@SuppressWarnings("unused")
 public class Utills {
 
     public static IEntitySelector selectLivingBase = new IEntitySelector() {
@@ -31,22 +32,6 @@ public class Utills {
             return entity instanceof EntityPlayer;
         }
     };
-
-    public static String formatNumber(double value) {
-        if (value < 1000D) return String.valueOf(value);
-        else if (value < 1000000D) return String.valueOf(Math.round(value) / 1000D) + "K";
-        else if (value < 1000000000D) return String.valueOf(Math.round(value / 1000D) / 1000D) + "M";
-        else if (value < 1000000000000D) return String.valueOf(Math.round(value / 1000000D) / 1000D) + "B";
-        else return String.valueOf(Math.round(value / 1000000000D) / 1000D) + "T";
-    }
-
-    public static String formatNumber(long value) {
-        if (value < 1000L) return String.valueOf(value);
-        else if (value < 1000000L) return String.valueOf(Math.round(value) / 1000D) + "K";
-        else if (value < 1000000000L) return String.valueOf(Math.round(value / 1000L) / 1000D) + "M";
-        else if (value < 1000000000000L) return String.valueOf(Math.round(value / 1000000L) / 1000D) + "B";
-        else return String.valueOf(Math.round(value / 1000000000L) / 1000D) + "T";
-    }
 
     /**
      * Add commas to a number e.g. 161253126 > 161,253,126

@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL12;
 /**
  * Created by Brandon on 28/06/2014.
  */
+@SuppressWarnings("unused")
 public class GuiHelper {
 
     public static final double PXL128 = 0.0078125;

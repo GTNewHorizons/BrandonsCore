@@ -16,6 +16,7 @@ import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = BrandonsCore.MODID, version = BrandonsCore.VERSION, name = BrandonsCore.MODNAME)
+@SuppressWarnings("unused")
 public class BrandonsCore {
 
     public static final String MODNAME = "Brandon's Core";
