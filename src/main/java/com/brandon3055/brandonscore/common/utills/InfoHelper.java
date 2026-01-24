@@ -10,9 +10,12 @@ import org.lwjgl.input.Keyboard;
 
 import cofh.api.energy.IEnergyContainerItem;
 
+import static com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil.formatNumberCompact;
+
 /**
  * Created by Brandon on 1/07/2014.
  */
+@SuppressWarnings("unused")
 public class InfoHelper {
 
     @SuppressWarnings("unchecked")
@@ -20,16 +23,8 @@ public class InfoHelper {
         IEnergyContainerItem item = (IEnergyContainerItem) stack.getItem();
         int energy = item.getEnergyStored(stack);
         int maxEnergy = item.getMaxEnergyStored(stack);
-        String eS = "";
-        String eM = "";
-        if (energy < 1000) eS = String.valueOf(energy);
-        else if (energy < 1000000) eS = String.valueOf(energy); // Math.round((float)energy / 10F)/100F)+"k";
-        else eS = String.valueOf(Math.round((float) energy / 1000F) / 1000F) + "m";
-        if (maxEnergy < 1000) eM = String.valueOf(maxEnergy);
-        else if (maxEnergy < 1000000) eM = String.valueOf(Math.round((float) maxEnergy / 100F) / 10F) + "k";
-        else eM = String.valueOf(Math.round((float) maxEnergy / 10000F) / 100F) + "m";
 
-        list.add(StatCollector.translateToLocal("info.de.charge.txt") + ": " + eS + " / " + eM + " RF");
+        list.add(StatCollector.translateToLocal("info.de.charge.txt") + ": " + formatNumberCompact(energy) + " / " + formatNumberCompact(maxEnergy) + " RF");
     }
 
     @SuppressWarnings("unchecked")

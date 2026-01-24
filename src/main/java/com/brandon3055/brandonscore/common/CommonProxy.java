@@ -9,6 +9,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 /**
  * Created by Brandon on 14/5/2015.
  */
+@SuppressWarnings("unused")
 public class CommonProxy {
 
     public boolean isDedicatedServer() {

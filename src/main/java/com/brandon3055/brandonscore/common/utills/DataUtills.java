@@ -13,6 +13,7 @@ import io.netty.buffer.ByteBuf;
 /**
  * Created by Brandon on 31/12/2014.
  */
+@SuppressWarnings("unused")
 public class DataUtills {
 
     public static DataUtills instance = new DataUtills();

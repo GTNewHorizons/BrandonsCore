@@ -28,6 +28,7 @@ public class ProcessHandler {
     }
 
     @SubscribeEvent
+    @SuppressWarnings("unused")
     public void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
 
@@ -47,11 +48,13 @@ public class ProcessHandler {
     }
 
     @SubscribeEvent
+    @SuppressWarnings("unused")
     public void onWorldClose(WorldEvent.Unload event) {
         processes.clear();
         newProcesses.clear();
     }
 
+    @SuppressWarnings("unused")
     public static void addProcess(IProcess process) {
         newProcesses.add(process);
     }

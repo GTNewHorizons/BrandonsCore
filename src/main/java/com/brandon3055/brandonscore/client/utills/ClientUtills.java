@@ -7,6 +7,7 @@ import com.brandon3055.brandonscore.common.utills.LogHelper;
 /**
  * Created by brandon3055 on 11/11/2015.
  */
+@SuppressWarnings("unused")
 public class ClientUtills {
 
     public static void openLink(String url) {
