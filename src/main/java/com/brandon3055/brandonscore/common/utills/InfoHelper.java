@@ -1,5 +1,7 @@
 package com.brandon3055.brandonscore.common.utills;
 
+import static com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil.formatNumberCompact;
+
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
@@ -9,8 +11,6 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.input.Keyboard;
 
 import cofh.api.energy.IEnergyContainerItem;
-
-import static com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil.formatNumberCompact;
 
 /**
  * Created by Brandon on 1/07/2014.
@@ -24,7 +24,12 @@ public class InfoHelper {
         int energy = item.getEnergyStored(stack);
         int maxEnergy = item.getMaxEnergyStored(stack);
 
-        list.add(StatCollector.translateToLocal("info.de.charge.txt") + ": " + formatNumberCompact(energy) + " / " + formatNumberCompact(maxEnergy) + " RF");
+        list.add(
+                StatCollector.translateToLocal("info.de.charge.txt") + ": "
+                        + formatNumberCompact(energy)
+                        + " / "
+                        + formatNumberCompact(maxEnergy)
+                        + " RF");
     }
 
     @SuppressWarnings("unchecked")
